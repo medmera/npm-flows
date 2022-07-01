@@ -6,9 +6,6 @@ on:
         default: '10.x'
         type: string
     secrets:
-      GITHUB_TOKEN:
-        description: The GH token of calling action
-        required: true
       PACKAGES_WITE_PAT:
         description: The Access Token, which allows write of private packages
         required: true
