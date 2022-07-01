@@ -6,6 +6,9 @@ on:
         default: '10.x'
         type: string
     secrets:
+      PACKAGES_READ_PAT:
+        description: The Access Token, which allows read of private packages
+        required: true
       PACKAGES_WRITE_PAT:
         description: The Access Token, which allows write of private packages
         required: true
@@ -59,7 +62,9 @@ jobs:
           scope: '@medmera'
       
       - run: npm ci
-      
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.PACKAGES_READ_PAT }}  
+             
       - run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.PACKAGES_WRITE_PAT }}
